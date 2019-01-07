@@ -30,6 +30,25 @@
             </div>
         </div>
     </div>
-<script></script>
+<script>
+    let fact = document.querySelector('#fact');
+    let factText = document.querySelector('#factText');
+    let number = document.querySelector('#numberInput');
+
+    number.addEventListener('input',getFactFetch);
+
+    function getFactFetch (){
+        let number = document.querySelector('#numberInput').value;
+        fetch(`http://numbersapi.com/${number}`)
+            .then((res)=> res.text())
+            .then((data)=>{ 
+                if (number != ''){
+                    factText.innerHTML = data;
+                    fact.style.display = 'inline';
+                }
+            })
+            .catch((error)=>alert('Something happened...'))
+        }
+</script>
 </body>
 </html>
